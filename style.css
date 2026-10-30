@@ -1,33 +1,63 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 #main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 15px;
+
     background-image: linear-gradient(45deg, #b3282f, #6b3074);
-    width: 100vw;
-    height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* =========================
+   MAIN BOX
+========================= */
+
 #mainBox {
     width: 60%;
-    height: 60%;
+    max-width: 1000px;
+    min-height: 550px;
+
     background-color: white;
     border-radius: 20px;
+
     display: flex;
     position: relative;
+    overflow: hidden;
 }
+
+/* =========================
+   PLAYERS
+========================= */
 
 .player {
     width: 50%;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
+    padding: 25px 10px;
+
     background-color: #ad6e8d;
 }
 
@@ -35,68 +65,216 @@
     background-color: #d9a3b0;
 }
 
+/* =========================
+   SCORE DETAILS
+========================= */
 
 .detailsAndTotalScore {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+    text-align: center;
 }
 
 .detailsAndTotalScore h3 {
-    font-size: 40px;
+    font-size: clamp(22px, 3vw, 40px);
 }
 
 .detailsAndTotalScore h1 {
-    font-size: 100px;
+    font-size: clamp(55px, 8vw, 100px);
 }
+
+/* =========================
+   CURRENT SCORE
+========================= */
 
 .turnScore {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 30px;
+
+    font-size: clamp(18px, 2.5vw, 30px);
+
     background-color: #bf2e57;
     padding: 10px 20px;
+
     color: white;
     border-radius: 10px;
+    text-align: center;
 }
+
+/* =========================
+   CENTER AREA
+========================= */
 
 #centerArea {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-around;
+
     position: absolute;
     height: 100%;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 .btn {
     background-color: #f6f0f0;
     border-radius: 20px;
     text-align: center;
+
     padding: 10px 20px;
+    cursor: pointer;
+
+    white-space: nowrap;
+    transition: 0.3s;
 }
+
+.btn:hover {
+    background-color: #bf2e57;
+    color: white;
+}
+
+/* =========================
+   LEADERBOARD
+========================= */
 
 #leaderBoardDiv {
     width: 60%;
+    max-width: 700px;
+    margin: 30px auto;
 }
 
 ul {
     width: 100%;
     border-radius: 20px;
+    overflow: hidden;
 }
-
 
 ul li {
     width: 100%;
+    min-height: 60px;
+
     list-style: none;
     background-color: #b3282f;
+
     font-size: 20px;
     border: 2px solid black;
-    height: 60px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 10px;
+    text-align: center;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    #mainBox {
+        width: 85%;
+        min-height: 500px;
+    }
+
+    #leaderBoardDiv {
+        width: 80%;
+    }
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    #main {
+        padding: 20px 12px;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    #mainBox {
+        width: 100%;
+        min-height: 500px;
+        border-radius: 15px;
+    }
+
+    .player {
+        width: 50%;
+        padding: 15px 5px;
+    }
+
+    .detailsAndTotalScore h3 {
+        font-size: 20px;
+    }
+
+    .detailsAndTotalScore h1 {
+        font-size: 55px;
+    }
+
+    .turnScore {
+        font-size: 17px;
+        padding: 8px 10px;
+    }
+
+    #centerArea {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 9px 10px;
+    }
+
+    #leaderBoardDiv {
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    ul li {
+        font-size: 16px;
+        min-height: 50px;
+    }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    #mainBox {
+        min-height: 430px;
+    }
+
+    .detailsAndTotalScore h3 {
+        font-size: 16px;
+    }
+
+    .detailsAndTotalScore h1 {
+        font-size: 42px;
+    }
+
+    .turnScore {
+        font-size: 14px;
+        padding: 7px;
+    }
+
+    .btn {
+        font-size: 10px;
+        padding: 8px;
+    }
+
 }
